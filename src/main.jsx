@@ -2,13 +2,24 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import Signup from "./components/Signup.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ArticleList from "./components/ArticleList.jsx";
+import Article from "./components/Article.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      { index: true, Component: ArticleList },
+      { path: ":postid", Component: Article },
+    ],
+  },
+  {
+    path: "login",
+    element: <Login />,
   },
   {
     path: "signup",

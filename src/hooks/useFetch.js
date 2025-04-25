@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useFetch(url, method, body) {
+function useFetch(url, options) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,13 +8,7 @@ function useFetch(url, method, body) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url, {
-          method: method,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        });
+        const response = await fetch(url, options);
         if (!response.ok) {
           throw new Error(`HTTP error: Status ${response.status}`);
         }
@@ -28,7 +22,8 @@ function useFetch(url, method, body) {
         setLoading(false);
       }
     };
-  }, [url]);
+    fetchData();
+  }, [url, options]);
 
   return { data, loading, error };
 }
