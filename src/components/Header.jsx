@@ -8,7 +8,7 @@ function Header() {
       <input type="text" name="search" id="" placeholder="Search" />
       <div>
         <NavLink to="/login">Login</NavLink>
-        <NavLink to="signup">Signup</NavLink>
+        <NavLink to="/signup">Signup</NavLink>
       </div>
     </nav>
   );
