@@ -9,7 +9,7 @@ function Signup() {
     event.preventDefault();
     try {
       const formData = Object.fromEntries(new FormData(event.target));
-      const fetchData = await fetch("http://localhost:3000/signup", {
+      const fetchData = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
