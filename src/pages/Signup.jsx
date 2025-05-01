@@ -40,8 +40,8 @@ function Signup() {
           <input type="password" name="password" id="password" required />
           <label htmlFor="confirm">Confirm Password</label>
           <input type="password" name="confirm" id="confirm" required />
-          <button type="submit">Create Account</button>
           {error && <p>{error.message}</p>}
+          <button type="submit">Create Account</button>
         </form>
       </div>
     </>
