@@ -20,7 +20,10 @@ function Login() {
         throw new Error(`HTTP error: Status ${fetchData.status}`);
       }
       const responseData = await fetchData.json();
-      localStorage.setItem("jwtToken", responseData.token);
+      localStorage.setItem(
+        "jwtToken",
+        JSON.stringify("Bearer " + responseData.token)
+      );
       console.log(responseData);
       navigate("/");
     } catch (error) {

@@ -7,6 +7,7 @@ import Signup from "./pages/Signup.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ArticleList from "./components/ArticleList.jsx";
 import Article from "./components/Article.jsx";
+import Error from "./pages/Error.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { index: true, Component: ArticleList },
       { path: ":postid", Component: Article },
     ],
+    errorElement: <Error />,
   },
   {
     path: "login",
