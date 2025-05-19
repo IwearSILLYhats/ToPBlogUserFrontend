@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, Component: ArticleList },
-      { path: ":postid", Component: Article },
+      { path: "posts/:postid", Component: Article },
     ],
     errorElement: <Error />,
   },

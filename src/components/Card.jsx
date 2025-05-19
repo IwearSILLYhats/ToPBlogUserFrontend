@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 
-function Card(articleInfo) {
+function Card({ articleInfo }) {
   return (
-    <Link to={"/posts" + articleInfo.id}>
+    <Link to={"/posts/" + articleInfo.id}>
       <div className="card">
         <p>{articleInfo.title}</p>
-        <p>{articleInfo.author}</p>
-        <p>{articleInfo.date}</p>
+        <p>{articleInfo.author.username}</p>
       </div>
     </Link>
   );
 }
-
 export default Card;
