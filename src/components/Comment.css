@@ -3,7 +3,6 @@
 .commentReplies {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 .postInfo {
   display: flex;
@@ -12,7 +11,7 @@
 }
 .comment {
   border-left: 1px solid white;
-  padding: 1rem;
+  padding: 0.5rem 0rem 0.5rem 0.5rem;
 }
 
 .commentButtons {
