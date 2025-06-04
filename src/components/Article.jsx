@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import Viewer from "./Viewer";
@@ -10,10 +9,6 @@ function Article() {
   const { loading, error, data } = useFetch(
     `${import.meta.env.VITE_API_URL}/posts/${postid}`
   );
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <>

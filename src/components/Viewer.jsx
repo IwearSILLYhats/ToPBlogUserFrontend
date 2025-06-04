@@ -16,7 +16,7 @@ function Viewer({ article }) {
     StarterKit,
     TaskItem,
     TaskList,
-    TextAlign,
+    TextAlign.configure({ types: ["heading", "paragraph"] }),
     Typography,
     Highlight,
     Subscript,

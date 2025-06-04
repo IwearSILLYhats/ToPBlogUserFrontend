@@ -1,30 +1,39 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import CommentForm from "./CommentForm";
 
-function Comment({ nested }) {
+function Comment({ commentData, children }) {
+  const commentChildren = useMemo(
+    () => children.filter((comment) => comment.comment_id === commentData.id),
+    [children, commentData]
+  );
   const [reply, setReply] = useState(false);
+
   return (
     <div className="comment">
-      <div className="postInfo">
-        <h5>Username</h5>
-        <h5>Date Posted</h5>
+      <div className="commentInfo">
+        <h5>{commentData.author.username}</h5>
+        <h5>{commentData.timestamp}</h5>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi
-        animi accusantium odit fuga quaerat! Laboriosam mollitia quod similique
-        sint voluptates, enim ipsam iure repudiandae distinctio sit
-        reprehenderit quam hic natus.
-      </p>
+      <p>{commentData.content}</p>
       <div className="commentButtons">
         <button onClick={() => setReply(!reply)}>Reply</button>
         <button>Edit</button>
         <button>Delete</button>
       </div>
-      {reply && <CommentForm />}
-      {nested && (
+      {reply && (
+        <CommentForm parent={commentData.id} post={commentData.post_id} />
+      )}
+      {commentChildren && commentChildren.length > 0 && (
         <div className="commentReplies">
-          <Comment nested={false} />
-          <Comment nested={false} />
+          {commentChildren.map((comment) => {
+            return (
+              <Comment
+                commentData={comment}
+                children={children}
+                key={comment.id}
+              />
+            );
+          })}
         </div>
       )}
     </div>
